@@ -1,0 +1,7 @@
+django
+djangorestframework
+openai
+python-dotenv
+pytest-django
+psycopg2-binary
+django-cors-headers
