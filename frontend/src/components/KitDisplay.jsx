@@ -1,13 +1,6 @@
-function SectionCard({ title, children }) {
-  return (
-    <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-      <div className="bg-indigo-50 border-b border-indigo-100 px-6 py-3">
-        <h2 className="text-indigo-800 font-semibold text-base">{title}</h2>
-      </div>
-      <div className="px-6 py-5 text-slate-700 text-sm leading-relaxed">{children}</div>
-    </div>
-  );
-}
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import KitSection from './KitSection';
 
 function BulletList({ items }) {
   if (!items || items.length === 0) return null;
@@ -20,43 +13,43 @@ function BulletList({ items }) {
   );
 }
 
-function JobDescriptionSection({ data }) {
+function JobDescriptionContent({ data }) {
   if (!data) return <p className="text-slate-400 italic">No data available.</p>;
-
   if (typeof data === 'string') return <p className="whitespace-pre-wrap">{data}</p>;
-
   return (
-    <div className="space-y-4">
-      {(data.role_level) && (
-        <p className="text-xs font-medium text-indigo-600 uppercase tracking-wide">{data.role_level}</p>
+    <div className="space-y-4 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+      {data.role_level && (
+        <p className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+          {data.role_level}
+        </p>
       )}
       {data.summary && (
         <div>
-          <h3 className="font-semibold text-slate-800 mb-1">Summary</h3>
-          <p className="whitespace-pre-wrap">{data.summary}</p>
+          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">Summary</h4>
+          <p>{data.summary}</p>
         </div>
       )}
-      {data.responsibilities && (
+      {data.responsibilities?.length > 0 && (
         <div>
-          <h3 className="font-semibold text-slate-800 mb-1">Responsibilities</h3>
+          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">Responsibilities</h4>
           <BulletList items={data.responsibilities} />
         </div>
       )}
-      {data.required_qualifications && (
+      {data.required_qualifications?.length > 0 && (
         <div>
-          <h3 className="font-semibold text-slate-800 mb-1">Required Qualifications</h3>
+          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">Required Qualifications</h4>
           <BulletList items={data.required_qualifications} />
         </div>
       )}
-      {data.preferred_qualifications && (
+      {data.preferred_qualifications?.length > 0 && (
         <div>
-          <h3 className="font-semibold text-slate-800 mb-1">Preferred Qualifications</h3>
+          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">Preferred Qualifications</h4>
           <BulletList items={data.preferred_qualifications} />
         </div>
       )}
-      {data.what_we_offer && (
+      {data.what_we_offer?.length > 0 && (
         <div>
-          <h3 className="font-semibold text-slate-800 mb-1">What We Offer</h3>
+          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">What We Offer</h4>
           <BulletList items={data.what_we_offer} />
         </div>
       )}
@@ -64,45 +57,25 @@ function JobDescriptionSection({ data }) {
   );
 }
 
-function ScorecardSection({ data }) {
+function ScorecardContent({ data }) {
   if (!data) return <p className="text-slate-400 italic">No data available.</p>;
-
-  const items = Array.isArray(data) ? data : (data.dimensions || data.criteria || data.items || []);
-
-  if (items.length === 0 && typeof data === 'string') {
-    return <p className="whitespace-pre-wrap">{data}</p>;
-  }
-
+  const dimensions = Array.isArray(data) ? data : (data.dimensions || []);
   return (
     <div className="space-y-3">
-      {items.map((item, index) => (
-        <div key={index} className="border-b border-slate-100 pb-3 last:border-0 last:pb-0">
-          {typeof item === 'string' ? (
-            <div className="flex gap-3 items-start">
-              <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full flex items-center justify-center mt-0.5">
-                {index + 1}
+      {dimensions.map((dim, index) => (
+        <div key={index} className="border border-slate-100 dark:border-slate-700 rounded-xl p-4">
+          <div className="flex items-center justify-between mb-2">
+            <p className="font-semibold text-slate-800 dark:text-slate-100 text-sm">{dim.name}</p>
+            {dim.weight && (
+              <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded-full">
+                {dim.weight}
               </span>
-              <p>{item}</p>
-            </div>
-          ) : (
-            <div className="flex gap-3 items-start">
-              <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full flex items-center justify-center mt-0.5">
-                {index + 1}
-              </span>
-              <div className="flex-1">
-                {(item.name || item.category) && (
-                  <p className="font-semibold text-slate-800">{item.name || item.category}</p>
-                )}
-                {item.weight && <p className="text-xs text-indigo-600 mt-0.5">Weight: {item.weight}</p>}
-                {item.criteria && item.criteria.length > 0 && (
-                  <ul className="mt-1 list-disc list-inside space-y-0.5 text-slate-600">
-                    {item.criteria.map((criterion, i) => (
-                      <li key={i}>{criterion}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
+            )}
+          </div>
+          {dim.criteria?.length > 0 && (
+            <ul className="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 space-y-0.5">
+              {dim.criteria.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
           )}
         </div>
       ))}
@@ -110,21 +83,21 @@ function ScorecardSection({ data }) {
   );
 }
 
-function QuestionList({ questions, label }) {
-  if (!questions || questions.length === 0) return null;
+function QuestionGroup({ questions, label }) {
+  if (!questions?.length) return null;
   return (
     <div>
-      <h3 className="font-semibold text-slate-700 text-sm uppercase tracking-wide mb-2">{label}</h3>
+      <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">{label}</h4>
       <div className="space-y-4">
         {questions.map((item, index) => (
-          <div key={index} className="space-y-1">
-            <p className="font-semibold text-slate-800">
+          <div key={index} className="border-l-2 border-indigo-100 dark:border-indigo-800 pl-4">
+            <p className="font-medium text-slate-800 dark:text-slate-100 text-sm">
               {index + 1}. {typeof item === 'string' ? item : item.question}
             </p>
-            {typeof item === 'object' && (item.what_to_listen_for || item.evaluation_criteria) && (
-              <p className="text-slate-500 text-xs">
-                <span className="font-medium">What to listen for: </span>
-                {item.what_to_listen_for || item.evaluation_criteria}
+            {typeof item === 'object' && item.what_to_listen_for && (
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                <span className="font-semibold">Listen for: </span>
+                {item.what_to_listen_for}
               </p>
             )}
           </div>
@@ -134,82 +107,40 @@ function QuestionList({ questions, label }) {
   );
 }
 
-function InterviewQuestionsSection({ data }) {
+function InterviewQuestionsContent({ data }) {
   if (!data) return <p className="text-slate-400 italic">No data available.</p>;
-
-  if (Array.isArray(data)) {
-    return (
-      <div className="space-y-5">
-        {data.map((item, index) => (
-          <div key={index} className="space-y-1">
-            <p className="font-semibold text-slate-800">
-              {index + 1}. {typeof item === 'string' ? item : item.question}
-            </p>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if (typeof data === 'string') return <p className="whitespace-pre-wrap">{data}</p>;
-
+  if (typeof data === 'string') return <p className="whitespace-pre-wrap text-sm">{data}</p>;
   return (
     <div className="space-y-6">
-      <QuestionList questions={data.behavioral} label="Behavioral" />
-      <QuestionList questions={data.technical} label="Technical" />
-      <QuestionList questions={data.questions} label="Questions" />
+      <QuestionGroup questions={data.behavioral} label="Behavioral" />
+      <QuestionGroup questions={data.technical} label="Technical" />
     </div>
   );
 }
 
-function SkillsRubricSection({ data }) {
+function SkillsRubricContent({ data }) {
   if (!data) return <p className="text-slate-400 italic">No data available.</p>;
-
-  const skills = Array.isArray(data) ? data : (data.skills || data.rubric || []);
-
-  if (skills.length === 0 && typeof data === 'string') {
-    return <p className="whitespace-pre-wrap">{data}</p>;
-  }
-
+  const skills = Array.isArray(data) ? data : (data.skills || []);
   return (
     <div className="space-y-4">
       {skills.map((skill, index) => (
-        <div key={index} className="border border-slate-200 rounded-lg overflow-hidden">
-          {typeof skill === 'string' ? (
-            <p className="px-4 py-3">{skill}</p>
-          ) : (
-            <>
-              {skill.skill && (
-                <div className="bg-slate-50 px-4 py-2 font-semibold text-slate-800 text-sm border-b border-slate-200">
-                  {skill.skill}
+        <div key={index} className="border border-slate-100 dark:border-slate-700 rounded-xl overflow-hidden">
+          <div className="bg-slate-50 dark:bg-slate-700/50 px-4 py-2 border-b border-slate-100 dark:border-slate-700">
+            <p className="font-semibold text-slate-800 dark:text-slate-100 text-sm">{skill.skill}</p>
+          </div>
+          {skill.levels && (
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 dark:divide-slate-700">
+              {[
+                ['below_expectations', 'Below', 'text-red-600 dark:text-red-400'],
+                ['meets_expectations', 'Meets', 'text-amber-600 dark:text-amber-400'],
+                ['exceeds_expectations', 'Exceeds', 'text-green-600 dark:text-green-400'],
+              ].map(([key, label, colorClass]) => (
+                <div key={key} className="px-4 py-3 text-xs">
+                  <p className={`font-semibold mb-1 ${colorClass}`}>{label}</p>
+                  <p className="text-slate-500 dark:text-slate-400 leading-relaxed">{skill.levels[key]}</p>
                 </div>
-              )}
-              <div className="px-4 py-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                {skill.levels ? (
-                  [
-                    ['below_expectations', 'Below Expectations'],
-                    ['meets_expectations', 'Meets Expectations'],
-                    ['exceeds_expectations', 'Exceeds Expectations'],
-                  ].map(([key, label]) =>
-                    skill.levels[key] ? (
-                      <div key={key}>
-                        <p className="font-semibold text-slate-600 mb-0.5">{label}</p>
-                        <p className="text-slate-500">{skill.levels[key]}</p>
-                      </div>
-                    ) : null
-                  )
-                ) : (
-                  ['beginner', 'intermediate', 'advanced'].map((level) =>
-                    skill[level] ? (
-                      <div key={level}>
-                        <p className="font-semibold text-slate-600 capitalize mb-0.5">{level}</p>
-                        <p className="text-slate-500">{skill[level]}</p>
-                      </div>
-                    ) : null
-                  )
-                )}
-              </div>
-            </>
+              ))}
+            </div>
           )}
         </div>
       ))}
@@ -217,35 +148,137 @@ function SkillsRubricSection({ data }) {
   );
 }
 
-export default function KitDisplay({ kit }) {
+const SECTION_CONFIG = [
+  {
+    key: 'job_description',
+    title: 'Job Description',
+    ContentComponent: JobDescriptionContent,
+  },
+  {
+    key: 'scorecard',
+    title: 'Interview Scorecard',
+    ContentComponent: ScorecardContent,
+  },
+  {
+    key: 'interview_questions',
+    title: 'Interview Questions',
+    ContentComponent: InterviewQuestionsContent,
+  },
+  {
+    key: 'skills_assessment_rubric',
+    title: 'Skills Assessment Rubric',
+    ContentComponent: SkillsRubricContent,
+  },
+];
+
+export default function KitDisplay({ kit, onSectionRegenerated }) {
+  const [sections, setSections] = useState(kit?.generated_kit || {});
+
+  function handleSectionRegenerated(sectionName, newData) {
+    setSections((prev) => ({ ...prev, [sectionName]: newData }));
+    if (onSectionRegenerated) onSectionRegenerated(sectionName, newData);
+  }
+
+  function handleExportPdf() {
+    import('../utils/exportPdf').then(({ exportKitAsPdf }) => {
+      exportKitAsPdf('kit-display');
+    });
+  }
+
+  async function handleShare() {
+    const url = kit?.id ? `${window.location.origin}/kits/${kit.id}` : window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success('Link copied to clipboard');
+    } catch {
+      toast.error('Failed to copy link');
+    }
+  }
+
   if (!kit) return null;
 
-  const sections = kit.generated_kit || {};
+  const printDate = new Date().toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  });
 
   return (
-    <div className="w-full max-w-3xl mx-auto flex flex-col gap-6">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-slate-900">
-          {kit.role_title || 'Interview Kit'}
-        </h1>
-        <p className="text-slate-500 text-sm mt-1">Your complete interview kit is ready.</p>
+    <div className="w-full">
+      {/* Print-only header — hidden on screen, shown in PDF */}
+      <div
+        id="print-header"
+        style={{ display: 'none' }}
+        aria-hidden="true"
+      >
+        <span>{printDate}</span>
+        <span>HireKit AI</span>
       </div>
 
-      <SectionCard title="Job Description">
-        <JobDescriptionSection data={sections.job_description} />
-      </SectionCard>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+            {kit.role_title || 'Interview Kit'}
+          </h2>
+          <div className="flex flex-wrap gap-2 mt-1.5">
+            {kit.role_level && (
+              <span className="text-xs bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded-full font-medium border border-indigo-100 dark:border-indigo-800">
+                {kit.role_level}
+              </span>
+            )}
+            {kit.industry && (
+              <span className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-full font-medium">
+                {kit.industry}
+              </span>
+            )}
+            {kit.company_size && (
+              <span className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-full font-medium">
+                {kit.company_size}
+              </span>
+            )}
+            {kit.remote_policy && (
+              <span className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-full font-medium">
+                {kit.remote_policy}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <button
+            onClick={handleShare}
+            className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><polyline points="16 6 12 2 8 6" /><line x1="12" y1="2" x2="12" y2="15" />
+            </svg>
+            Share
+          </button>
+          <button
+            onClick={handleExportPdf}
+            className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Export PDF
+          </button>
+        </div>
+      </div>
 
-      <SectionCard title="Interview Scorecard">
-        <ScorecardSection data={sections.scorecard} />
-      </SectionCard>
-
-      <SectionCard title="Interview Questions">
-        <InterviewQuestionsSection data={sections.interview_questions} />
-      </SectionCard>
-
-      <SectionCard title="Skills Assessment Rubric">
-        <SkillsRubricSection data={sections.skills_assessment_rubric} />
-      </SectionCard>
+      <div id="kit-display" className="flex flex-col gap-4">
+        {SECTION_CONFIG.map(({ key, title, ContentComponent }) => (
+          <KitSection
+            key={key}
+            title={title}
+            sectionName={key}
+            sectionData={sections[key]}
+            kitId={kit.id}
+            onRegenerated={handleSectionRegenerated}
+          >
+            <div className="p-5">
+              <ContentComponent data={sections[key]} />
+            </div>
+          </KitSection>
+        ))}
+      </div>
     </div>
   );
 }

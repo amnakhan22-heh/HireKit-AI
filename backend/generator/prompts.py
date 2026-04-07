@@ -8,6 +8,20 @@ outcomes, not personal characteristics.
 Role Description provided by the hiring manager:
 {role_description}
 
+Additional context to tailor the kit:
+- Role Level: {role_level}
+- Industry: {industry}
+- Company Size: {company_size}
+- Remote Policy: {remote_policy}
+
+Use all of the above context to make the job description, scorecard, interview questions, and
+skills rubric highly specific and relevant. For example:
+- Adjust seniority expectations and compensation language to match the role level.
+- Use industry-appropriate terminology and domain knowledge in questions and rubrics.
+- Reflect the company size culture (e.g. Startup: generalist scope, bias for action;
+  Enterprise: process, stakeholder management).
+- Include remote/hybrid/on-site expectations in responsibilities and what_we_offer sections.
+
 Return a single JSON object with exactly this structure (no markdown, no extra text):
 {{
   "job_description": {{
@@ -56,3 +70,87 @@ Return a single JSON object with exactly this structure (no markdown, no extra t
   }}
 }}
 """
+
+SECTION_REGENERATION_PROMPT = """
+You are an expert talent acquisition specialist and HR professional. Regenerate only the
+"{section_name}" section of an interview kit for the following role.
+
+Use inclusive, bias-free language throughout. Avoid gendered pronouns.
+
+Role Description:
+{role_description}
+
+Context:
+- Role Level: {role_level}
+- Industry: {industry}
+- Company Size: {company_size}
+- Remote Policy: {remote_policy}
+
+Return a single JSON object containing only the "{section_name}" key with fresh, high-quality
+content. Use the same schema as below (no markdown, no extra text):
+
+{section_schema}
+"""
+
+JOB_DESCRIPTION_SCHEMA = """{
+  "job_description": {
+    "role_title": "<standardized title>",
+    "role_level": "<Junior/Mid-level/Senior/Lead>",
+    "summary": "<2-3 sentence overview>",
+    "responsibilities": ["<responsibility>", "..."],
+    "required_qualifications": ["<qualification>", "..."],
+    "preferred_qualifications": ["<qualification>", "..."],
+    "what_we_offer": ["<benefit>", "..."]
+  }
+}"""
+
+SCORECARD_SCHEMA = """{
+  "scorecard": {
+    "dimensions": [
+      {
+        "name": "<dimension name>",
+        "weight": "<percentage>",
+        "criteria": ["<criterion>", "..."]
+      }
+    ]
+  }
+}"""
+
+INTERVIEW_QUESTIONS_SCHEMA = """{
+  "interview_questions": {
+    "behavioral": [
+      {
+        "question": "<behavioral question>",
+        "what_to_listen_for": "<evaluation guidance>"
+      }
+    ],
+    "technical": [
+      {
+        "question": "<technical question>",
+        "what_to_listen_for": "<evaluation guidance>"
+      }
+    ]
+  }
+}"""
+
+SKILLS_RUBRIC_SCHEMA = """{
+  "skills_assessment_rubric": {
+    "skills": [
+      {
+        "skill": "<skill name>",
+        "levels": {
+          "below_expectations": "<description>",
+          "meets_expectations": "<description>",
+          "exceeds_expectations": "<description>"
+        }
+      }
+    ]
+  }
+}"""
+
+SECTION_SCHEMAS = {
+    "job_description": JOB_DESCRIPTION_SCHEMA,
+    "scorecard": SCORECARD_SCHEMA,
+    "interview_questions": INTERVIEW_QUESTIONS_SCHEMA,
+    "skills_assessment_rubric": SKILLS_RUBRIC_SCHEMA,
+}
