@@ -2,8 +2,9 @@ import json
 import logging
 import os
 from openai import OpenAI
-from .prompts import FULL_KIT_PROMPT, SECTION_REGENERATION_PROMPT, SECTION_SCHEMAS, CV_MATCH_PROMPT
+from .prompts import FULL_KIT_PROMPT, SECTION_REGENERATION_PROMPT, SECTION_SCHEMAS
 from .rag import retrieve_relevant_questions
+from .cv_pipeline import build_cv_match_graph
 
 logger = logging.getLogger(__name__)
 
@@ -148,7 +149,6 @@ def _parse_and_validate_section(raw_content: str, section_name: str) -> dict:
 
 
 def match_cv_to_role(cv_text: str, role_data: dict) -> dict:
-    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
     job_desc = role_data.get('job_description', {})
     required_qualifications = '\n'.join(
         f'- {q}' for q in job_desc.get('required_qualifications', [])
@@ -157,24 +157,19 @@ def match_cv_to_role(cv_text: str, role_data: dict) -> dict:
         f'- {q}' for q in job_desc.get('preferred_qualifications', [])
     )
 
-    prompt = CV_MATCH_PROMPT.format(
-        role_title=role_data.get('role_title', ''),
-        role_level=role_data.get('role_level', 'Not specified'),
-        job_description_summary=job_desc.get('summary', ''),
-        required_qualifications=required_qualifications or 'Not specified',
-        preferred_qualifications=preferred_qualifications or 'Not specified',
-        cv_text=cv_text,
-    )
+    graph = build_cv_match_graph()
+    final_state = graph.invoke({
+        "cv_text": cv_text,
+        "role_title": role_data.get('role_title', ''),
+        "role_level": role_data.get('role_level', 'Not specified'),
+        "job_description_summary": job_desc.get('summary', ''),
+        "required_qualifications": required_qualifications or 'Not specified',
+        "preferred_qualifications": preferred_qualifications or 'Not specified',
+        "candidate_profile": {},
+        "match_result": {},
+    })
 
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"},
-        temperature=0.3,
-    )
-
-    raw_content = response.choices[0].message.content
-    return _parse_and_validate_cv_match(raw_content)
+    return _parse_and_validate_cv_match(json.dumps(final_state["match_result"]))
 
 
 def _parse_and_validate_cv_match(raw_content: str) -> dict:
@@ -185,9 +180,14 @@ def _parse_and_validate_cv_match(raw_content: str) -> dict:
 
     required_keys = [
         'compatibility_percentage',
-        'explanation',
-        'strengths_matched',
-        'gaps_identified',
+        'score_explanation',
+        'executive_summary',
+        'key_strengths',
+        'key_gaps',
+        'experience_analysis',
+        'cultural_and_role_fit',
+        'recommendation',
+        'recommendation_detail',
     ]
     missing = [key for key in required_keys if key not in result]
     if missing:
@@ -195,5 +195,9 @@ def _parse_and_validate_cv_match(raw_content: str) -> dict:
 
     if not isinstance(result['compatibility_percentage'], int):
         raise ValueError("compatibility_percentage must be an integer")
+    if len(result['key_strengths']) < 5:
+        raise ValueError("CV match result must contain at least 5 key strengths")
+    if len(result['key_gaps']) < 4:
+        raise ValueError("CV match result must contain at least 4 key gaps")
 
     return result

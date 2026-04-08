@@ -43,7 +43,7 @@ export default function HeroSection() {
             href="/kits"
             className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
           >
-            View Kit History
+            View Kits
           </a>
         </div>
       </div>
