@@ -9,6 +9,20 @@ from .prompts import CV_EXTRACT_PROMPT, CV_MATCH_PROMPT
 
 
 class CVMatchState(TypedDict):
+    """
+    Typed state dict shared between nodes in the CV matching LangGraph graph.
+
+    Attributes:
+        cv_text (str): Raw text extracted from the candidate's PDF CV.
+        role_title (str): Title of the role being evaluated against.
+        role_level (str): Seniority level of the role (e.g. ``Senior``).
+        job_description_summary (str): 2-3 sentence summary from the generated job description.
+        required_qualifications (str): Newline-formatted required qualifications string.
+        preferred_qualifications (str): Newline-formatted preferred qualifications string.
+        candidate_profile (dict): Structured profile extracted from the CV in node 1.
+        match_result (dict): Scored match result produced in node 2.
+    """
+
     cv_text: str
     role_title: str
     role_level: str

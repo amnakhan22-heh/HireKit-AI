@@ -4,6 +4,28 @@ from django.db import models
 
 
 class InterviewKit(models.Model):
+    """
+    Persist a generated interview kit alongside its input context.
+
+    Stores the hiring manager's original role description, the contextual
+    metadata used to tailor the kit (role level, industry, company size, remote
+    policy), the full JSON output from the AI generation pipeline, and the
+    kit's publication status.
+
+    Attributes:
+        id (UUID): Auto-generated UUID primary key.
+        role_title (str): Role title extracted from the generated job description.
+        role_description (str): Original plain-language description from the hiring manager.
+        role_level (str): Seniority level choice (e.g. ``Senior``).
+        industry (str): Industry context choice (e.g. ``Tech``).
+        company_size (str): Company size choice (e.g. ``Startup``).
+        remote_policy (str): Work arrangement choice (e.g. ``Remote``).
+        generated_kit (dict): Full kit JSON with all four sections.
+        status (str): ``draft`` (default) or ``published``.
+        created_by (User): ForeignKey to the Django user who created the kit.
+        created_at (datetime): Auto-set timestamp on creation, in UTC.
+    """
+
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
@@ -55,4 +77,10 @@ class InterviewKit(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
+        """
+        Return a human-readable representation of the kit.
+
+        Returns:
+            str: The role title followed by the UUID in parentheses.
+        """
         return f"{self.role_title} ({self.id})"
