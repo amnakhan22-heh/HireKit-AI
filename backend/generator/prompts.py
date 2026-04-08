@@ -22,6 +22,10 @@ skills rubric highly specific and relevant. For example:
   Enterprise: process, stakeholder management).
 - Include remote/hybrid/on-site expectations in responsibilities and what_we_offer sections.
 
+Reference questions from our curated knowledge base (use as inspiration and starting points,
+but generate a complete, fully tailored kit — do not copy these verbatim):
+{reference_questions}
+
 Return a single JSON object with exactly this structure (no markdown, no extra text):
 {{
   "job_description": {{
@@ -154,3 +158,32 @@ SECTION_SCHEMAS = {
     "interview_questions": INTERVIEW_QUESTIONS_SCHEMA,
     "skills_assessment_rubric": SKILLS_RUBRIC_SCHEMA,
 }
+
+CV_MATCH_PROMPT = """
+You are an expert talent acquisition specialist evaluating a candidate's CV against a job opening.
+Assess the match objectively and fairly. Focus solely on skills, qualifications, and relevant experience.
+Ignore all personal details such as name, age, gender, ethnicity, nationality, or address.
+
+Job Title: {role_title}
+Role Level: {role_level}
+
+Job Description Summary:
+{job_description_summary}
+
+Required Qualifications:
+{required_qualifications}
+
+Preferred Qualifications:
+{preferred_qualifications}
+
+Candidate CV:
+{cv_text}
+
+Return a single JSON object with exactly this structure (no markdown, no extra text):
+{{
+  "compatibility_percentage": <integer between 0 and 100>,
+  "explanation": "<2-3 sentence overall assessment of the candidate's fit for the role>",
+  "strengths_matched": ["<strength 1>", "<strength 2>", "..."],
+  "gaps_identified": ["<gap 1>", "<gap 2>", "..."]
+}}
+"""

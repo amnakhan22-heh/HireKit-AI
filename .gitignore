@@ -41,5 +41,8 @@ db.sqlite3
 staticfiles/
 media/
 
+# ChromaDB local vector store
+chroma_db/
+
 # Claude
 CLAUDE.md

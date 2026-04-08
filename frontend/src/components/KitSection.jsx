@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { regenerateSection } from '../api/kitApi';
+import { useAuth } from '../context/AuthContext';
 
 function CopyIcon() {
   return (
@@ -34,6 +35,7 @@ export default function KitSection({ title, sectionName, sectionData, kitId, onR
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState('');
+  const { token } = useAuth();
 
   async function handleCopy() {
     try {
@@ -51,7 +53,7 @@ export default function KitSection({ title, sectionName, sectionData, kitId, onR
     }
     setIsRegenerating(true);
     try {
-      const result = await regenerateSection(kitId, sectionName);
+      const result = await regenerateSection(token, kitId, sectionName);
       onRegenerated(sectionName, result.data);
       toast.success('Section regenerated successfully');
     } catch (error) {
@@ -95,7 +97,7 @@ export default function KitSection({ title, sectionName, sectionData, kitId, onR
             >
               <CopyIcon /> Copy
             </button>
-            {kitId && (
+            {kitId && token && (
               <button
                 onClick={handleRegenerate}
                 disabled={isRegenerating}
