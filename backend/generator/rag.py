@@ -5,6 +5,8 @@ from pathlib import Path
 import chromadb
 from openai import OpenAI
 
+from .prompts import QUERY_EXPANSION_PROMPT
+
 
 KNOWLEDGE_BASE_PATH = Path(__file__).parent / "knowledge_base.json"
 CHROMA_DB_PATH = str(Path(__file__).parent.parent / "chroma_db")
@@ -36,45 +38,26 @@ def retrieve_relevant_questions(
 ) -> list:
     """Return the n most semantically relevant questions for the given role.
 
-    Applies metadata filters for role_level and industry before running cosine
-    similarity, so results are always contextually appropriate before ranking.
-    Falls back to unfiltered search if no metadata matches are found.
+    Uses pure cosine similarity against the expanded query — no metadata
+    filters. The knowledge base is organized by industry domain (e.g. Finance
+    = accounting questions), not by role function (e.g. Product Manager). Hard
+    filtering by industry or role_level would exclude competency-based questions
+    (prioritization, stakeholder management) that are relevant to any role but
+    happen to be tagged under a different industry. Semantic search handles
+    relevance; the LLM adapts the retrieved questions to the specific role.
     """
     client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
     collection = client.get_collection(COLLECTION_NAME)
     openai_client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-    query_text = f"{role_title} {role_level} {industry} {role_description}"
-    query_embedding = _embed_texts(openai_client, [query_text])[0]
+    expanded_query = _expand_query(openai_client, role_title, role_description, role_level, industry)
+    query_embedding = _embed_texts(openai_client, [expanded_query])[0]
 
-    metadata_filter = _build_metadata_filter(role_level, industry)
     results = collection.query(
         query_embeddings=[query_embedding],
         n_results=n,
-        where=metadata_filter if metadata_filter else None,
     )
-
-    if not results["documents"][0]:
-        results = collection.query(
-            query_embeddings=[query_embedding],
-            n_results=n,
-        )
     return results["documents"][0]
-
-
-def _build_metadata_filter(role_level: str, industry: str) -> dict:
-    """Build a ChromaDB $and filter for role_level and industry when both are present."""
-    conditions = []
-    if role_level:
-        conditions.append({"role_level": {"$eq": role_level}})
-    if industry:
-        conditions.append({"industry": {"$eq": industry}})
-
-    if len(conditions) == 2:
-        return {"$and": conditions}
-    if len(conditions) == 1:
-        return conditions[0]
-    return {}
 
 
 def _populate_collection(collection) -> None:
@@ -109,6 +92,28 @@ def _build_collection_data(openai_client, questions: list) -> tuple:
         for item in questions
     ]
     return ids, embeddings, texts, metadatas
+
+
+def _expand_query(
+    openai_client: OpenAI,
+    role_title: str,
+    role_description: str,
+    role_level: str,
+    industry: str,
+) -> str:
+    """Use gpt-4o-mini to expand the role context into a keyword-rich search query."""
+    prompt = QUERY_EXPANSION_PROMPT.format(
+        role_level=role_level or "Not specified",
+        industry=industry or "Not specified",
+        role_description=f"{role_title} {role_description}".strip(),
+    )
+    response = openai_client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3,
+        max_tokens=200,
+    )
+    return response.choices[0].message.content.strip()
 
 
 def _embed_texts(openai_client: OpenAI, texts: list) -> list:

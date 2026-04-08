@@ -1,3 +1,18 @@
+QUERY_EXPANSION_PROMPT = """
+You are a talent acquisition expert. Given a job role description and context, extract a
+concise list of the most relevant keywords and themes for finding interview questions.
+
+Include: key technical skills, soft skills, seniority signals, domain knowledge areas,
+and likely interview themes (e.g. system design, stakeholder management, debugging).
+
+Role Level: {role_level}
+Industry: {industry}
+Role Description: {role_description}
+
+Respond with a single plain-text paragraph of comma-separated keywords and short phrases.
+No bullet points, no headers, no explanation — just the keywords.
+"""
+
 FULL_KIT_PROMPT = """
 You are an expert talent acquisition specialist and HR professional. A hiring manager has described
 a role they want to fill. Your task is to generate a complete, professional interview kit.
@@ -25,6 +40,9 @@ skills rubric highly specific and relevant. For example:
 Reference questions from our curated knowledge base (use as inspiration and starting points,
 but generate a complete, fully tailored kit — do not copy these verbatim):
 {reference_questions}
+
+IMPORTANT: The interview_questions section must contain a minimum of 3 behavioral questions
+and a minimum of 3 technical questions. Do not generate fewer than this.
 
 Return a single JSON object with exactly this structure (no markdown, no extra text):
 {{

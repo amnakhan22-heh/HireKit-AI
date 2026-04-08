@@ -115,7 +115,22 @@ def _parse_and_validate_kit(raw_content: str) -> dict:
     if missing:
         raise ValueError(f"Generated kit is missing required sections: {missing}")
 
+    _validate_interview_question_minimums(kit)
     return kit
+
+
+def _validate_interview_question_minimums(kit: dict) -> None:
+    questions = kit.get("interview_questions", {})
+    behavioral_count = len(questions.get("behavioral", []))
+    technical_count = len(questions.get("technical", []))
+    if behavioral_count < 3:
+        raise ValueError(
+            f"Generated kit has only {behavioral_count} behavioral question(s); minimum is 3."
+        )
+    if technical_count < 3:
+        raise ValueError(
+            f"Generated kit has only {technical_count} technical question(s); minimum is 3."
+        )
 
 
 def _parse_and_validate_section(raw_content: str, section_name: str) -> dict:
