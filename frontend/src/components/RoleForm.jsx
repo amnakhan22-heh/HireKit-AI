@@ -132,14 +132,14 @@ export default function RoleForm({ onSubmit, isLoading }) {
         <textarea
           id="role_description"
           value={roleDescription}
-          onChange={(e) => setRoleDescription(e.target.value)}
+          onChange={(e) => setRoleDescription(e.target.value.slice(0, 3000))}
           placeholder="e.g. We're a Series B fintech startup looking for a senior backend engineer to lead our payments API. They'll own architecture decisions, mentor 2 junior engineers, and collaborate closely with product. Must have 5+ years of experience with Python and distributed systems."
           rows={6}
           disabled={isLoading}
           className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:opacity-50 resize-vertical"
         />
-        <p className="text-xs text-slate-400 dark:text-slate-500 text-right">
-          {roleDescription.length} / 5000 characters
+        <p className={`text-xs text-right ${roleDescription.length >= 3000 ? 'text-red-500' : 'text-slate-400 dark:text-slate-500'}`}>
+          {roleDescription.length} / 3000 characters
         </p>
       </div>
 
