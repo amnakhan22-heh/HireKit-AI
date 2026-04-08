@@ -177,10 +177,29 @@ SECTION_SCHEMAS = {
     "skills_assessment_rubric": SKILLS_RUBRIC_SCHEMA,
 }
 
+CV_EXTRACT_PROMPT = """
+You are a talent acquisition specialist. Extract structured information from the candidate's CV.
+Ignore all personal details such as name, age, gender, ethnicity, nationality, and address.
+Focus only on professional content.
+
+CV Text:
+{cv_text}
+
+Return a single JSON object with exactly this structure (no markdown, no extra text):
+{{
+  "skills": ["<skill 1>", "<skill 2>", "..."],
+  "years_of_experience": <integer or null if unclear>,
+  "education": ["<degree and field>", "..."],
+  "achievements": ["<notable achievement 1>", "..."],
+  "previous_roles": ["<job title at company>", "..."]
+}}
+"""
+
 CV_MATCH_PROMPT = """
-You are an expert talent acquisition specialist evaluating a candidate's CV against a job opening.
-Assess the match objectively and fairly. Focus solely on skills, qualifications, and relevant experience.
-Ignore all personal details such as name, age, gender, ethnicity, nationality, or address.
+You are an expert talent acquisition specialist producing a detailed candidate evaluation report.
+Be specific — reference actual skills, roles, and achievements from the candidate profile.
+Never be vague or generic. Every insight must be grounded in evidence from the candidate profile.
+Use inclusive, bias-free language. Do not reference age, gender, ethnicity, or nationality.
 
 Job Title: {role_title}
 Role Level: {role_level}
@@ -194,14 +213,37 @@ Required Qualifications:
 Preferred Qualifications:
 {preferred_qualifications}
 
-Candidate CV:
-{cv_text}
+Candidate Profile (pre-extracted from CV):
+{candidate_profile}
 
 Return a single JSON object with exactly this structure (no markdown, no extra text):
 {{
   "compatibility_percentage": <integer between 0 and 100>,
-  "explanation": "<2-3 sentence overall assessment of the candidate's fit for the role>",
-  "strengths_matched": ["<strength 1>", "<strength 2>", "..."],
-  "gaps_identified": ["<gap 1>", "<gap 2>", "..."]
+  "score_explanation": "<one paragraph explaining exactly why this score was given — reference specific matches and gaps that drove the number>",
+  "executive_summary": "<2-3 paragraphs: who this candidate is professionally, how well they fit this specific role, and what kind of employee they would likely be based on their CV>",
+  "key_strengths": [
+    {{
+      "strength": "<specific skill or experience from their CV>",
+      "relevance": "<why this is directly relevant to this role>",
+      "match_level": "<Strong Match | Good Match | Partial Match>"
+    }}
+  ],
+  "key_gaps": [
+    {{
+      "gap": "<what is missing or underdeveloped relative to the role requirements>",
+      "criticality": "<Critical | Important | Minor>",
+      "learnable_on_job": <true | false>
+    }}
+  ],
+  "experience_analysis": "<detailed paragraph comparing the candidate's years and type of experience to what this role requires — be specific about where they align and where they fall short>",
+  "cultural_and_role_fit": "<paragraph assessing whether their background suggests they would thrive in this type of role, company size, and industry — reference their previous roles and achievements as evidence>",
+  "recommendation": "<Strong Fit | Good Fit | Possible Fit | Not a Fit>",
+  "recommendation_detail": "<detailed paragraph explaining the recommendation and specific advice for the hiring manager on what to probe in the interview — name the actual areas to dig into>"
 }}
+
+Rules:
+- key_strengths must contain a minimum of 5 items
+- key_gaps must contain a minimum of 4 items
+- Every field must be populated — no nulls, no empty strings, no empty arrays
+- Do not copy the job description back — evaluate the candidate against it
 """

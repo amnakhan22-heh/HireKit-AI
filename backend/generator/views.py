@@ -188,7 +188,7 @@ class CVMatchView(APIView):
 
         try:
             match_result = match_cv_to_role(cv_text, role_data)
-        except ValueError as error:
+        except (ValueError, Exception) as error:
             return Response({'detail': str(error)}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(match_result)

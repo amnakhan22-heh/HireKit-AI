@@ -7,3 +7,5 @@ pytest-django
 psycopg2-binary
 django-cors-headers
 pypdf
+langgraph
+langchain-openai

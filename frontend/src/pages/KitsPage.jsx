@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import LoadingSkeleton from '../components/LoadingSkeleton';
@@ -53,6 +53,17 @@ export default function KitsPage() {
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
   const [count, setCount] = useState(0);
+  const [query, setQuery] = useState('');
+
+  const filteredKits = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return kits;
+    return kits.filter((kit) =>
+      [kit.role_title, kit.role_level, kit.industry, kit.remote_policy]
+        .filter(Boolean)
+        .some((field) => field.toLowerCase().includes(q))
+    );
+  }, [kits, query]);
 
   async function loadKits(url) {
     setIsLoading(true);
@@ -79,13 +90,46 @@ export default function KitsPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Open Roles</h1>
-            {!isLoading && count > 0 && (
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                {count} open role{count !== 1 ? 's' : ''} available
-              </p>
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Open Roles</h1>
+              {!isLoading && count > 0 && (
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                  {query
+                    ? `${filteredKits.length} of ${count} role${count !== 1 ? 's' : ''} match`
+                    : `${count} open role${count !== 1 ? 's' : ''} available`}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="relative">
+            <svg
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none"
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search by role title, level, industry…"
+              className="w-full pl-10 pr-10 py-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            />
+            {query && (
+              <button
+                onClick={() => setQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                aria-label="Clear search"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
             )}
           </div>
         </div>
@@ -107,10 +151,25 @@ export default function KitsPage() {
           </div>
         )}
 
-        {!isLoading && kits.length > 0 && (
+        {!isLoading && kits.length > 0 && filteredKits.length === 0 && (
+          <div className="text-center py-20">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">No roles match</h2>
+            <p className="text-slate-500 dark:text-slate-400 max-w-xs mx-auto text-sm mb-4">
+              Try a different search term.
+            </p>
+            <button
+              onClick={() => setQuery('')}
+              className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              Clear search
+            </button>
+          </div>
+        )}
+
+        {!isLoading && filteredKits.length > 0 && (
           <>
             <div className="flex flex-col gap-3">
-              {kits.map((kit) => (
+              {filteredKits.map((kit) => (
                 <RoleCard key={kit.id} kit={kit} />
               ))}
             </div>
