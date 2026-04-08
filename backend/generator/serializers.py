@@ -10,6 +10,13 @@ VALID_SECTIONS = [
 
 
 class InterviewKitCreateSerializer(serializers.Serializer):
+    """
+    Validate input for the full kit generation endpoint.
+
+    Enforces character length constraints on ``role_description`` and restricts
+    optional context fields to their defined choice sets.
+    """
+
     role_description = serializers.CharField(
         min_length=20,
         max_length=5000,
@@ -46,9 +53,25 @@ class InterviewKitCreateSerializer(serializers.Serializer):
 
 
 class InterviewKitSerializer(serializers.ModelSerializer):
+    """
+    Read serializer for the ``InterviewKit`` model.
+
+    All fields are read-only. The ``created_by`` field exposes the owner's
+    username rather than the internal user ID.
+    """
+
     created_by = serializers.SerializerMethodField()
 
     def get_created_by(self, obj):
+        """
+        Return the username of the kit's creator, or None if unset.
+
+        Args:
+            obj (InterviewKit): The kit instance being serialized.
+
+        Returns:
+            str or None: The username string, or None if ``created_by`` is null.
+        """
         if obj.created_by:
             return obj.created_by.username
         return None
@@ -83,8 +106,20 @@ class InterviewKitSerializer(serializers.ModelSerializer):
 
 
 class PublishToggleSerializer(serializers.Serializer):
+    """
+    Validate the ``status`` field for the publish toggle endpoint.
+
+    Accepts only ``draft`` or ``published``.
+    """
+
     status = serializers.ChoiceField(choices=[('draft', 'Draft'), ('published', 'Published')])
 
 
 class RegenerateSectionSerializer(serializers.Serializer):
+    """
+    Validate the ``section_name`` field for the regenerate section endpoint.
+
+    Accepts only the four valid kit section names defined in ``VALID_SECTIONS``.
+    """
+
     section_name = serializers.ChoiceField(choices=VALID_SECTIONS)
