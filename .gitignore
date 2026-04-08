@@ -24,7 +24,7 @@ dist-ssr/
 
 # Logs
 *.log
-npm-debug.log*
+nmdpm-debug.log*
 
 # OS
 .DS_Store
@@ -44,5 +44,4 @@ media/
 # ChromaDB local vector store
 chroma_db/
 
-# Claude
-CLAUDE.md
+
