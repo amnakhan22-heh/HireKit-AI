@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ROLE_LEVELS = ['Junior', 'Mid-level', 'Senior', 'Lead'];
 const INDUSTRIES = ['Tech', 'Finance', 'Healthcare', 'Marketing', 'Operations', 'Other'];
@@ -28,7 +28,7 @@ function SelectField({ id, label, hint, value, onChange, options, disabled }) {
   );
 }
 
-export default function RoleForm({ onSubmit, isLoading }) {
+export default function RoleForm({ onSubmit, isLoading, prefillData }) {
   const [roleTitle, setRoleTitle] = useState('');
   const [roleDescription, setRoleDescription] = useState('');
   const [roleLevel, setRoleLevel] = useState('');
@@ -36,6 +36,16 @@ export default function RoleForm({ onSubmit, isLoading }) {
   const [companySize, setCompanySize] = useState('');
   const [remotePolicy, setRemotePolicy] = useState('');
   const [validationError, setValidationError] = useState('');
+
+  useEffect(() => {
+    if (!prefillData) return;
+    setRoleTitle(prefillData.roleTitle || '');
+    setRoleDescription(prefillData.roleDescription || '');
+    setRoleLevel(prefillData.roleLevel || '');
+    setIndustry(prefillData.industry || '');
+    setCompanySize(prefillData.companySize || '');
+    setRemotePolicy(prefillData.remotePolicy || '');
+  }, [prefillData]);
 
   function handleSubmit(event) {
     event.preventDefault();

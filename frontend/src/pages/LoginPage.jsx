@@ -33,10 +33,10 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         <div className="flex items-center gap-2 justify-center mb-8">
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
-            IK
+            HK
           </div>
           <span className="font-semibold text-slate-900 dark:text-white text-base">
-            Interview Kit Generator
+            HireKit AI
           </span>
         </div>
 

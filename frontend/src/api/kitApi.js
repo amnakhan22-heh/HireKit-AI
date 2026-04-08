@@ -61,8 +61,9 @@ export async function listKits(token) {
   return response.json();
 }
 
-export async function getKit(kitId) {
-  const response = await fetch(`${BASE_URL}/kits/${kitId}/`);
+export async function getKit(kitId, token) {
+  const headers = token ? { 'Authorization': `Token ${token}` } : {};
+  const response = await fetch(`${BASE_URL}/kits/${kitId}/`, { headers });
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
   }

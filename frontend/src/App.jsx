@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
+import HowItWorksPage from './pages/HowItWorksPage';
 import KitsPage from './pages/KitsPage';
 import KitDetailPage from './pages/KitDetailPage';
 import RoleDetailPage from './pages/RoleDetailPage';
@@ -28,6 +29,7 @@ export default function App() {
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/kits" element={<KitsPage />} />
           <Route path="/kits/:id" element={<KitDetailPage />} />
           <Route path="/roles/:id" element={<RoleDetailPage />} />

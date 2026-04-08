@@ -17,7 +17,7 @@ const STEPS = [
       </svg>
     ),
     title: 'AI generates your kit',
-    description: 'GPT-4o creates an inclusive job description, interview scorecard, behavioral & technical questions, and a skills rubric tailored to your context.',
+    description: 'AI generates an inclusive job description, interview scorecard, behavioral & technical questions, and a skills rubric tailored to your context.',
   },
   {
     number: '03',
@@ -37,7 +37,7 @@ export default function HowItWorksSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3">
-            How it works
+            For Hiring Managers
           </h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
             From role description to complete interview kit in under a minute.

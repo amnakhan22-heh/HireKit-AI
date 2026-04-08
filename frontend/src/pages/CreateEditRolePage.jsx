@@ -23,7 +23,7 @@ export default function CreateEditRolePage() {
     if (!isEditMode) return;
     async function fetchKit() {
       try {
-        const data = await getKit(id);
+        const data = await getKit(id, token);
         setExistingKit(data);
       } catch {
         setErrorMessage('Failed to load kit data.');
@@ -32,7 +32,7 @@ export default function CreateEditRolePage() {
       }
     }
     fetchKit();
-  }, [id, isEditMode]);
+  }, [id, isEditMode, token]);
 
   async function handleSubmit(formData) {
     setIsSubmitting(true);
@@ -68,6 +68,7 @@ export default function CreateEditRolePage() {
   }
 
   const prefillData = existingKit ? {
+    roleTitle: existingKit.role_title,
     roleDescription: existingKit.role_description,
     roleLevel: existingKit.role_level,
     industry: existingKit.industry,

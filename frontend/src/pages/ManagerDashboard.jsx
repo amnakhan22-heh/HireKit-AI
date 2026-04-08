@@ -72,13 +72,7 @@ function KitCard({ kit, onDelete, onTogglePublish }) {
           to={`/kits/${kit.id}`}
           className="px-3 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 rounded-xl transition-colors"
         >
-          View
-        </Link>
-        <Link
-          to={`/manager/roles/${kit.id}/edit`}
-          className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors"
-        >
-          Edit
+          View / Edit
         </Link>
         <button
           onClick={handleTogglePublish}

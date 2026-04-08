@@ -57,14 +57,25 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
-            IK
+            HK
           </div>
           <span className="font-semibold text-slate-900 dark:text-white text-sm group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-            Interview Kit Generator
+            HireKit AI
           </span>
         </Link>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
+          <Link
+            to="/how-it-works"
+            className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
+              location.pathname === '/how-it-works'
+                ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+            }`}
+          >
+            How It Works
+          </Link>
+
           {token ? (
             <>
               <Link
@@ -75,7 +86,7 @@ export default function Navbar() {
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
-                Dashboard
+                My Roles
               </Link>
               <button
                 onClick={handleLogout}
@@ -85,17 +96,30 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <Link
-              to="/kits"
-              className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
-                location.pathname === '/kits'
-                  ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
-              }`}
-            >
-              Browse Roles
-            </Link>
+            <>
+              <Link
+                to="/kits"
+                className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                  location.pathname === '/kits'
+                    ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+              >
+                Browse Roles
+              </Link>
+              <Link
+                to="/login"
+                className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                  location.pathname === '/login'
+                    ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+              >
+                Login
+              </Link>
+            </>
           )}
+
           <button
             onClick={() => setIsDark(!isDark)}
             className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
