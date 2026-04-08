@@ -46,6 +46,13 @@ class InterviewKitCreateSerializer(serializers.Serializer):
 
 
 class InterviewKitSerializer(serializers.ModelSerializer):
+    created_by = serializers.SerializerMethodField()
+
+    def get_created_by(self, obj):
+        if obj.created_by:
+            return obj.created_by.username
+        return None
+
     class Meta:
         model = InterviewKit
         fields = [
@@ -57,6 +64,8 @@ class InterviewKitSerializer(serializers.ModelSerializer):
             "company_size",
             "remote_policy",
             "generated_kit",
+            "status",
+            "created_by",
             "created_at",
         ]
         read_only_fields = [
@@ -67,8 +76,14 @@ class InterviewKitSerializer(serializers.ModelSerializer):
             "company_size",
             "remote_policy",
             "generated_kit",
+            "status",
+            "created_by",
             "created_at",
         ]
+
+
+class PublishToggleSerializer(serializers.Serializer):
+    status = serializers.ChoiceField(choices=[('draft', 'Draft'), ('published', 'Published')])
 
 
 class RegenerateSectionSerializer(serializers.Serializer):

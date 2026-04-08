@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { logoutManager } from '../api/kitApi';
 
 function SunIcon() {
   return (
@@ -27,6 +29,8 @@ export default function Navbar() {
     return false;
   });
   const location = useLocation();
+  const navigate = useNavigate();
+  const { token, logout } = useAuth();
 
   useEffect(() => {
     if (isDark) {
@@ -37,6 +41,16 @@ export default function Navbar() {
       localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
+
+  async function handleLogout() {
+    try {
+      await logoutManager(token);
+    } catch {
+      // proceed with local logout
+    }
+    logout();
+    navigate('/login');
+  }
 
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-sm bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-700">
@@ -51,16 +65,37 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/kits"
-            className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
-              location.pathname === '/kits'
-                ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
-                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
-            }`}
-          >
-            Kit History
-          </Link>
+          {token ? (
+            <>
+              <Link
+                to="/manager"
+                className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                  location.pathname.startsWith('/manager')
+                    ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+              >
+                Dashboard
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="text-sm font-medium px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/kits"
+              className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                location.pathname === '/kits'
+                  ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              Browse Roles
+            </Link>
+          )}
           <button
             onClick={() => setIsDark(!isDark)}
             className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"

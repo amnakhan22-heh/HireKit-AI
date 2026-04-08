@@ -1,0 +1,1052 @@
+[
+  {
+    "question": "Tell me about a time you had to learn a new programming language or framework quickly. How did you approach it and what was the outcome?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["learning agility", "self-development", "adaptability"]
+  },
+  {
+    "question": "Explain the difference between synchronous and asynchronous programming. When would you choose one over the other?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["concurrency", "programming fundamentals", "system design"]
+  },
+  {
+    "question": "You've just pushed a bug to production and your team lead is unavailable. Walk me through exactly what you would do.",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["incident response", "ownership", "communication"]
+  },
+  {
+    "question": "Tell me about a time you received critical feedback on your code in a review. How did you respond and what did you change?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["feedback reception", "growth mindset", "code quality"]
+  },
+  {
+    "question": "What is the difference between a process and a thread? Give a concrete example of when each is appropriate.",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["operating systems", "concurrency", "systems programming"]
+  },
+  {
+    "question": "Describe a situation where you had to refactor a legacy codebase while delivering new features simultaneously. How did you balance both?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["technical debt", "prioritization", "delivery"]
+  },
+  {
+    "question": "You notice a production API endpoint has response times increasing week over week. Walk me through your debugging and resolution process.",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["performance debugging", "observability", "problem solving"]
+  },
+  {
+    "question": "A product manager asks you to ship a feature in half the estimated time. How do you respond and what trade-offs do you surface?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["stakeholder management", "scope negotiation", "estimation"]
+  },
+  {
+    "question": "Give me an example of a time you caught a critical bug before it reached production. What process or approach led to catching it?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["quality assurance", "testing", "attention to detail"]
+  },
+  {
+    "question": "Describe how you would implement database connection pooling in a high-traffic web application. What configuration decisions matter most?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["databases", "performance", "scalability"]
+  },
+  {
+    "question": "Tell me about a technical decision you made that turned out to be wrong. How did you handle the fallout and what did you change afterward?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["accountability", "judgment", "learning from failure"]
+  },
+  {
+    "question": "How would you design a distributed rate-limiting system that works correctly across multiple server instances? What trade-offs would you make?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["distributed systems", "system design", "scalability"]
+  },
+  {
+    "question": "Your team disagrees about the right architecture for a critical new service. Two senior engineers are at an impasse. How do you move forward?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["conflict resolution", "technical leadership", "decision making"]
+  },
+  {
+    "question": "Describe a time you had to advocate for technical debt reduction to a non-technical stakeholder. What was your approach and outcome?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["stakeholder communication", "technical strategy", "influence"]
+  },
+  {
+    "question": "Explain the CAP theorem and describe a real scenario where it influenced a database or architecture choice you made.",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["distributed systems", "databases", "architecture"]
+  },
+  {
+    "question": "Describe how you grew a junior engineer into a confident mid-level contributor. What specific actions did you take and how did you measure progress?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["mentorship", "talent development", "coaching"]
+  },
+  {
+    "question": "How do you evaluate whether a technical standard or architectural pattern should become a team-wide convention? Walk me through your process.",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["engineering culture", "standards", "technical leadership"]
+  },
+  {
+    "question": "One of your strongest engineers receives a competing offer and comes to you. What do you do?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["retention", "people management", "leadership"]
+  },
+  {
+    "question": "You are onboarding two new engineers while also owning a major feature milestone. How do you structure your time and set expectations?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["time management", "onboarding", "prioritization"]
+  },
+  {
+    "question": "Tell me about a time you had to sunset a technology your team was comfortable with. How did you manage the technical and human side of the transition?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["change management", "technical strategy", "team alignment"]
+  },
+  {
+    "question": "Tell me about a time you caught a numerical or data error in a report before it was submitted. How did you find it and what did you do?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["attention to detail", "data integrity", "accuracy"]
+  },
+  {
+    "question": "Explain the difference between accounts receivable and accounts payable and describe how each affects a company's cash flow.",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["accounting fundamentals", "cash flow", "financial literacy"]
+  },
+  {
+    "question": "You discover that a spreadsheet model your predecessor built contains a formula error that has been present in reports for several months. What do you do?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["error handling", "escalation", "integrity"]
+  },
+  {
+    "question": "What is the difference between gross margin and operating margin? Why does each matter when evaluating a business?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["financial analysis", "profitability", "accounting"]
+  },
+  {
+    "question": "Describe a situation where you had to present a complex financial analysis to a non-finance audience. How did you make the information accessible?",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["communication", "data storytelling", "stakeholder management"]
+  },
+  {
+    "question": "Walk me through how you would build a three-statement financial model from scratch for a new business unit entering a market.",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["financial modeling", "forecasting", "analytical skills"]
+  },
+  {
+    "question": "You are asked to forecast next quarter's revenue but have incomplete data due to a system migration in progress. How do you approach this?",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["forecasting", "ambiguity", "problem solving"]
+  },
+  {
+    "question": "Give me an example of a time you had to push back on a business unit requesting budget for an initiative with poor projected ROI. What happened?",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["business partnering", "pushback", "financial judgment"]
+  },
+  {
+    "question": "Tell me about a time you identified a significant financial risk that others had overlooked. How did you escalate it and what was the outcome?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["risk management", "proactive thinking", "escalation"]
+  },
+  {
+    "question": "How do you evaluate the creditworthiness of a counterparty when standard financial data is limited, incomplete, or unreliable?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["credit analysis", "risk assessment", "judgment"]
+  },
+  {
+    "question": "A regulatory change has made your existing risk model non-compliant. You have 60 days to remediate. How do you plan and execute this?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["regulatory compliance", "project management", "risk"]
+  },
+  {
+    "question": "Describe a time you implemented a new financial control or reporting process. What resistance did you encounter and how did you address it?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["change management", "controls", "influence"]
+  },
+  {
+    "question": "Describe a time you had to build a finance function or capability from scratch within a growing organization. What was your approach?",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["org building", "strategic finance", "leadership"]
+  },
+  {
+    "question": "The CFO has asked you to cut 15% from your department's budget without reducing output quality. How do you approach this challenge?",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["cost management", "prioritization", "leadership"]
+  },
+  {
+    "question": "How would you design an FP&A reporting framework that can scale from a 50-person startup to a 500-person company?",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["FP&A", "scalability", "reporting design"]
+  },
+  {
+    "question": "Tell me about a time you managed relationships with external auditors during a particularly challenging audit period. How did you navigate it?",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["audit management", "external relationships", "transparency"]
+  },
+  {
+    "question": "Tell me about a time you had to communicate complex medical or clinical information to a patient or a non-clinical colleague. How did you approach it?",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["communication", "health literacy", "patient care"]
+  },
+  {
+    "question": "What are the key HIPAA principles that affect how you handle patient data in your daily work? Give a specific example of how you apply them.",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["HIPAA", "compliance", "data privacy"]
+  },
+  {
+    "question": "You notice that a colleague has made a documentation error in a patient's chart. What do you do?",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["patient safety", "accountability", "documentation"]
+  },
+  {
+    "question": "Explain the difference between electronic health records (EHR) and electronic medical records (EMR). When is each used and what are the implications?",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["health IT", "clinical systems", "interoperability"]
+  },
+  {
+    "question": "Describe a situation where you had to balance patient safety with operational efficiency. How did you resolve the conflict?",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["patient safety", "operational efficiency", "ethical decision making"]
+  },
+  {
+    "question": "How do you approach implementing a new clinical protocol or workflow change across a care team with varying levels of buy-in?",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["change management", "clinical leadership", "stakeholder alignment"]
+  },
+  {
+    "question": "A patient advocate is pushing for a treatment option that conflicts with current clinical guidelines. How do you navigate this conversation?",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["patient advocacy", "clinical judgment", "communication"]
+  },
+  {
+    "question": "Give me an example of a time you identified a patient safety risk and proactively took steps to address it before an incident occurred.",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["proactive safety", "risk identification", "clinical excellence"]
+  },
+  {
+    "question": "Tell me about a time you led a quality improvement initiative that resulted in measurable clinical or operational outcomes. What was your methodology?",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["quality improvement", "outcomes measurement", "leadership"]
+  },
+  {
+    "question": "How would you design a clinical data governance framework that ensures both regulatory compliance and practical accessibility for care teams?",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["data governance", "compliance", "clinical operations"]
+  },
+  {
+    "question": "Your department is facing a 20% reduction in staffing. How do you maintain care quality and protect your team's well-being through the transition?",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["resource constraints", "team well-being", "care quality"]
+  },
+  {
+    "question": "Tell me about a time you had to manage a critical incident or near-miss. What did you learn and how did it change your practice?",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["incident management", "learning culture", "clinical excellence"]
+  },
+  {
+    "question": "Describe how you built cross-functional alignment between clinical and operational teams to achieve a shared goal. What obstacles did you face?",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["cross-functional leadership", "alignment", "collaboration"]
+  },
+  {
+    "question": "A new regulation requires significant workflow changes across your entire department within 90 days. How do you manage the change and keep your team engaged?",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["regulatory compliance", "change management", "leadership"]
+  },
+  {
+    "question": "How would you evaluate and select a new clinical technology platform for a multi-site healthcare organization? What criteria drive your decision?",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["technology evaluation", "clinical IT", "vendor management"]
+  },
+  {
+    "question": "Describe your approach to building a culture of psychological safety within a high-pressure clinical environment.",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["psychological safety", "team culture", "leadership"]
+  },
+  {
+    "question": "Tell me about a campaign or project you contributed to that did not achieve its goals. What happened and what did you learn?",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["failure and learning", "accountability", "growth mindset"]
+  },
+  {
+    "question": "Explain the marketing funnel from awareness through to conversion. What metrics would you track at each stage and why?",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["marketing fundamentals", "metrics", "funnel strategy"]
+  },
+  {
+    "question": "You have a $5,000 budget to generate leads for a B2B SaaS product targeting mid-market companies. Walk me through how you would allocate it.",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["budget allocation", "B2B marketing", "channel strategy"]
+  },
+  {
+    "question": "What is the difference between SEO and SEM? How do they complement each other in a digital marketing strategy?",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["SEO", "SEM", "digital marketing"]
+  },
+  {
+    "question": "Describe a time you had to pivot a campaign strategy mid-execution because early performance data showed it was underperforming. What did you change and why?",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["data-driven decisions", "agility", "campaign management"]
+  },
+  {
+    "question": "How would you build a multi-touch attribution model to understand which channels are actually driving conversions in a complex customer journey?",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["attribution", "analytics", "marketing measurement"]
+  },
+  {
+    "question": "A product launch is two weeks away and the creative assets delivered by the agency are significantly below brand standard. How do you handle this?",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["brand management", "vendor management", "crisis handling"]
+  },
+  {
+    "question": "Give me an example of a time you used data to challenge a strongly held opinion from a senior stakeholder. What was the outcome?",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["data-driven influence", "pushback", "stakeholder management"]
+  },
+  {
+    "question": "Tell me about a go-to-market strategy you developed from scratch. What frameworks did you use and what was the measurable outcome?",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["GTM strategy", "product marketing", "strategic thinking"]
+  },
+  {
+    "question": "How do you use cohort analysis to diagnose a decline in customer retention? Walk me through your analytical approach step by step.",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["cohort analysis", "retention", "analytics"]
+  },
+  {
+    "question": "Your company is entering a new geographic market with distinct cultural and regulatory differences. What is your process for building a localized marketing strategy?",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["market expansion", "localization", "strategy"]
+  },
+  {
+    "question": "Tell me about a time you built a brand positioning strategy for a product competing in a crowded market. What made it stand out?",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["brand strategy", "positioning", "competitive differentiation"]
+  },
+  {
+    "question": "Describe a time you had to restructure your marketing team to align with a significant strategic shift in company direction. How did you manage the transition?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["org design", "change management", "team leadership"]
+  },
+  {
+    "question": "Your top acquisition channel drops 40% in performance overnight due to an algorithm change. How do you respond in the short term and how do you rebuild long-term resilience?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["channel diversification", "crisis response", "marketing strategy"]
+  },
+  {
+    "question": "How would you design a MarTech stack for a fast-growing B2C company? What tools and integrations would you prioritize and why?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["MarTech", "technology strategy", "B2C marketing"]
+  },
+  {
+    "question": "Describe how you have managed relationships with creative agencies or external partners on large-scale brand campaigns. How did you ensure quality and alignment?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["agency management", "brand governance", "partner relationships"]
+  },
+  {
+    "question": "Tell me about a time you identified an inefficiency in a process you were responsible for. What did you do and what was the measurable impact?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["process improvement", "initiative", "operational thinking"]
+  },
+  {
+    "question": "Explain the difference between a push and a pull supply chain model. When is each appropriate and what are the inventory implications?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["supply chain", "inventory management", "operations fundamentals"]
+  },
+  {
+    "question": "A key vendor notifies you they cannot fulfill your order due to supply shortages. What immediate steps do you take and how do you minimize disruption?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["vendor management", "supply chain", "problem solving"]
+  },
+  {
+    "question": "Describe a time you led a process improvement project that had measurable impact on cost, throughput, or quality. What methodology did you use?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["process improvement", "lean", "results orientation"]
+  },
+  {
+    "question": "How would you design a KPI dashboard for an operations team managing a fulfillment center with 50 employees? What metrics matter most and why?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["KPIs", "performance management", "operations analytics"]
+  },
+  {
+    "question": "You are taking over a team that has consistently missed SLA targets for the past two quarters. What do you do in your first 30 days?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["performance turnaround", "diagnosis", "team leadership"]
+  },
+  {
+    "question": "Tell me about a time you had to align cross-functional teams — such as procurement, finance, and logistics — around a major operational change. What was your approach?",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["cross-functional alignment", "change management", "influence"]
+  },
+  {
+    "question": "How do you apply lean or Six Sigma principles to identify and eliminate waste in a complex service operation? Give a concrete example.",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["lean", "Six Sigma", "process excellence"]
+  },
+  {
+    "question": "You are asked to scale operations from one geography to three within 12 months. What is your planning framework and what are the highest-risk dependencies?",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["scaling operations", "planning", "risk management"]
+  },
+  {
+    "question": "Describe how you have built an operations strategy that successfully balanced cost efficiency with service quality at scale.",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["operations strategy", "cost optimization", "service quality"]
+  },
+  {
+    "question": "A critical system outage is impacting fulfillment operations and your team cannot identify the root cause after 30 minutes. How do you manage the incident and communicate with stakeholders?",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["incident management", "stakeholder communication", "crisis leadership"]
+  },
+  {
+    "question": "How would you evaluate whether to automate, outsource, or keep in-house a core operational function? What criteria and data inform your decision?",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["build vs buy", "automation", "strategic operations"]
+  },
+  {
+    "question": "Describe a time when you had to work on a task with unclear or contradictory requirements. How did you clarify them and what was the outcome?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["requirements gathering", "communication", "ambiguity"]
+  },
+  {
+    "question": "What is the difference between REST and GraphQL? When would you recommend one over the other for a new API?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["APIs", "REST", "GraphQL"]
+  },
+  {
+    "question": "You are assigned to fix a bug that you cannot reproduce locally but consistently appears in the staging environment. How do you approach it?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["debugging", "environments", "problem solving"]
+  },
+  {
+    "question": "Tell me about a time you significantly improved test coverage on a codebase that had very few tests. What was your approach and what resistance did you face?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["testing", "quality", "code health"]
+  },
+  {
+    "question": "How would you approach migrating a monolithic application to microservices without downtime? What are the biggest technical and organizational risks?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["microservices", "migration", "system design"]
+  },
+  {
+    "question": "You are mid-sprint when a critical security vulnerability is discovered in a third-party dependency your service relies on. How do you handle it?",
+    "industry": "Tech",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["security", "incident response", "dependency management"]
+  },
+  {
+    "question": "Describe a time you introduced a new technology or tool to your team. How did you build buy-in and manage the learning curve?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["change management", "technical leadership", "adoption"]
+  },
+  {
+    "question": "How do you design an idempotent API endpoint? Why does idempotency matter and where do engineering teams most commonly get it wrong?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["API design", "idempotency", "reliability"]
+  },
+  {
+    "question": "You inherit a production service with no documentation, no tests, and the original engineer has left the company. How do you stabilize and improve it?",
+    "industry": "Tech",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["legacy systems", "ownership", "risk management"]
+  },
+  {
+    "question": "Tell me about a time you had to deliver difficult performance feedback to an engineer on your team. How did you prepare and how did the conversation go?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["performance management", "feedback", "people leadership"]
+  },
+  {
+    "question": "How do you design a technical interview process that is both fair and predictive of real on-the-job performance?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["hiring", "interview design", "engineering culture"]
+  },
+  {
+    "question": "Two teams are blocked on each other's deliverables and neither is willing to move first. As the engineering lead, how do you break the deadlock?",
+    "industry": "Tech",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["dependency management", "conflict resolution", "cross-team coordination"]
+  },
+  {
+    "question": "Tell me about a time you had to work carefully with a large dataset to produce an accurate financial report. What checks did you put in place?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["data accuracy", "reporting", "attention to detail"]
+  },
+  {
+    "question": "What is the difference between a balance sheet and an income statement? What does each tell you about the health of a business?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["financial statements", "accounting fundamentals", "analysis"]
+  },
+  {
+    "question": "A colleague asks you to approve a vendor invoice that is missing supporting documentation. What do you do?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["controls", "integrity", "compliance"]
+  },
+  {
+    "question": "Explain the concept of time value of money and give an example of how it applies to a real business investment decision.",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["TVM", "investment analysis", "financial fundamentals"]
+  },
+  {
+    "question": "Tell me about a time you identified a cost-saving opportunity through financial analysis. How did you quantify it and get the change implemented?",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["cost optimization", "analytical skills", "influence"]
+  },
+  {
+    "question": "How do you build a sensitivity analysis into a financial model? Walk me through the mechanics and how you present the output to decision makers.",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["sensitivity analysis", "financial modeling", "scenario planning"]
+  },
+  {
+    "question": "During month-end close, you discover a material discrepancy between two systems that cannot be reconciled in time. What do you do?",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["month-end close", "reconciliation", "escalation"]
+  },
+  {
+    "question": "Describe a situation where you had to collaborate with a non-finance team to gather data for a financial model. What challenges arose and how did you handle them?",
+    "industry": "Finance",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["cross-functional collaboration", "data gathering", "business partnering"]
+  },
+  {
+    "question": "Tell me about a time you led a cost reduction initiative across multiple business units. How did you build alignment and measure success?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["cost reduction", "stakeholder alignment", "program management"]
+  },
+  {
+    "question": "How do you approach building a long-range financial plan for a business unit where revenue projections carry high uncertainty?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["long-range planning", "uncertainty", "scenario analysis"]
+  },
+  {
+    "question": "The board is requesting a financial scenario analysis for a potential acquisition target within 48 hours. How do you structure and deliver this?",
+    "industry": "Finance",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["M&A", "scenario analysis", "executive communication"]
+  },
+  {
+    "question": "Describe how you have partnered with a CEO or board to influence a major strategic decision through financial analysis and storytelling.",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["executive influence", "strategic finance", "board communication"]
+  },
+  {
+    "question": "How would you design a financial controls framework for a company preparing for its first external audit?",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["internal controls", "audit readiness", "compliance"]
+  },
+  {
+    "question": "Your company is considering entering a new market but lacks comparable financial data to model it reliably. How do you approach the investment decision?",
+    "industry": "Finance",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["market entry", "investment decision", "ambiguity"]
+  },
+  {
+    "question": "Tell me about a time you had to adapt quickly to a new clinical or operational procedure under time pressure. How did you learn it and apply it safely?",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["adaptability", "learning agility", "patient safety"]
+  },
+  {
+    "question": "What is the difference between clinical quality measures and patient satisfaction scores? Why do both matter and how do they relate to each other?",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["quality metrics", "patient experience", "clinical outcomes"]
+  },
+  {
+    "question": "During a busy shift, you observe a colleague skipping a standard safety protocol due to time pressure. What do you do?",
+    "industry": "Healthcare",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["patient safety", "speaking up", "professionalism"]
+  },
+  {
+    "question": "Describe a time you had to manage a difficult interaction with a patient or family member who was dissatisfied with their care experience.",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["patient communication", "conflict de-escalation", "empathy"]
+  },
+  {
+    "question": "How would you evaluate whether a new care pathway introduced six months ago is actually improving patient outcomes? What data would you collect and analyze?",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["outcomes evaluation", "clinical data", "care pathways"]
+  },
+  {
+    "question": "You need to train your team on a new clinical software system but half the team is actively resistant to changing their current workflow. How do you handle this?",
+    "industry": "Healthcare",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["training", "change resistance", "adoption"]
+  },
+  {
+    "question": "Tell me about a time you had to make a difficult clinical or operational decision under significant time pressure with incomplete information.",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["decision making under pressure", "clinical judgment", "accountability"]
+  },
+  {
+    "question": "How do you approach building a staffing model that balances required patient-to-staff ratios, cost constraints, and regulatory requirements simultaneously?",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["workforce planning", "staffing models", "regulatory compliance"]
+  },
+  {
+    "question": "A new national clinical guideline directly contradicts your department's current practice. What is your process for evaluating and implementing the change?",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["clinical guidelines", "change management", "evidence-based practice"]
+  },
+  {
+    "question": "Describe a time you had to build trust with a care team that was skeptical or resistant to a change initiative you were leading.",
+    "industry": "Healthcare",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["trust building", "change leadership", "team dynamics"]
+  },
+  {
+    "question": "Tell me about a time you drove a strategic initiative that required sustained collaboration across clinical, administrative, and technology teams.",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["strategic leadership", "cross-functional", "collaboration"]
+  },
+  {
+    "question": "How would you build a business case for investing in a clinical AI tool to a board that is risk-averse and skeptical about new technology?",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["AI in healthcare", "business case", "board communication"]
+  },
+  {
+    "question": "You are inheriting a department with low staff morale and high turnover. What do you focus on in your first 90 days?",
+    "industry": "Healthcare",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["turnaround leadership", "morale", "retention"]
+  },
+  {
+    "question": "Tell me about a time you had to produce a piece of content under a very tight deadline without compromising quality. How did you manage it?",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["content creation", "time management", "quality under pressure"]
+  },
+  {
+    "question": "What is the difference between a conversion rate and a click-through rate? How would you use each metric to evaluate the performance of a campaign?",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["campaign metrics", "conversion", "performance analysis"]
+  },
+  {
+    "question": "You are tasked with growing a brand's social media following by 20% in three months with no additional budget. Walk me through your approach.",
+    "industry": "Marketing",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["organic growth", "social media", "creative constraint"]
+  },
+  {
+    "question": "Tell me about a time you ran an A/B test that produced a surprising or counterintuitive result. How did you interpret and act on the findings?",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["A/B testing", "experimentation", "data interpretation"]
+  },
+  {
+    "question": "How would you build a customer segmentation model from scratch using first-party data? What variables would you prioritize and why?",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["segmentation", "first-party data", "audience strategy"]
+  },
+  {
+    "question": "Your email open rates have dropped 30% over the past quarter with no obvious external cause. Walk me through how you diagnose and address this.",
+    "industry": "Marketing",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["email marketing", "performance diagnosis", "channel optimization"]
+  },
+  {
+    "question": "Describe a time you successfully repositioned a product or brand that was struggling to differentiate itself in a crowded market.",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["brand repositioning", "differentiation", "strategy"]
+  },
+  {
+    "question": "How do you measure the long-term brand equity impact of a marketing campaign, beyond short-term conversion or revenue metrics?",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["brand equity", "measurement", "long-term impact"]
+  },
+  {
+    "question": "You are asked to build a content marketing strategy for a heavily regulated industry where most topics require legal review before publication. How do you approach this?",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["regulated industries", "content strategy", "legal constraints"]
+  },
+  {
+    "question": "Tell me about a time you had to align sales and marketing teams around a shared pipeline and revenue target. What friction arose and how did you resolve it?",
+    "industry": "Marketing",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["sales-marketing alignment", "revenue operations", "collaboration"]
+  },
+  {
+    "question": "Describe how you have built and maintained a high-performing creative team. How do you balance structured process with space for creative experimentation?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["creative leadership", "team culture", "process design"]
+  },
+  {
+    "question": "How do you evaluate and justify marketing budget allocation across brand-building and performance channels to a CFO focused on short-term ROI?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["budget allocation", "brand vs performance", "executive communication"]
+  },
+  {
+    "question": "The company is pivoting its core product and you have six weeks to reposition the brand externally without losing existing customer trust. How do you lead this?",
+    "industry": "Marketing",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["brand pivot", "crisis communication", "strategic leadership"]
+  },
+  {
+    "question": "Tell me about a time you had to follow a complex multi-step procedure under significant time pressure. How did you ensure nothing was missed?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["process adherence", "attention to detail", "pressure management"]
+  },
+  {
+    "question": "What is the difference between a Gantt chart and a RACI matrix? When would you use each in an operational context?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "technical",
+    "tags": ["project management tools", "planning", "accountability frameworks"]
+  },
+  {
+    "question": "You discover partway through an operational task that the instructions you were given are incomplete or contradictory. What do you do?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["ambiguity", "communication", "problem solving"]
+  },
+  {
+    "question": "Describe a time you had to coordinate with multiple people across different teams to complete a time-sensitive operational task. How did you keep everyone aligned?",
+    "industry": "Operations",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["coordination", "communication", "teamwork"]
+  },
+  {
+    "question": "Tell me about a time you managed a vendor relationship that was consistently underperforming against agreed SLAs. How did you handle it?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["vendor management", "SLA management", "accountability"]
+  },
+  {
+    "question": "How would you calculate and apply Overall Equipment Effectiveness (OEE) to identify the highest-impact improvement opportunities in a production environment?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "technical",
+    "tags": ["OEE", "production efficiency", "performance measurement"]
+  },
+  {
+    "question": "Your team is significantly understaffed during a peak demand period and you cannot hire fast enough. How do you manage throughput without burning the team out?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "situational",
+    "tags": ["capacity management", "team well-being", "prioritization"]
+  },
+  {
+    "question": "Describe a time you implemented a change to an operational workflow that initially faced resistance from the frontline team. How did you manage the rollout?",
+    "industry": "Operations",
+    "role_level": "Mid-level",
+    "type": "behavioral",
+    "tags": ["change management", "frontline leadership", "adoption"]
+  },
+  {
+    "question": "Tell me about a time you identified and mitigated a significant operational risk before it became an incident. What was your process?",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["risk management", "proactive thinking", "operational resilience"]
+  },
+  {
+    "question": "How would you design a demand forecasting process for a business with highly seasonal and volatile order volumes?",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "technical",
+    "tags": ["demand forecasting", "seasonality", "supply chain planning"]
+  },
+  {
+    "question": "You are inheriting an operations function with no documented processes and critical institutional knowledge concentrated in two individuals. How do you stabilize it?",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "situational",
+    "tags": ["knowledge management", "process documentation", "risk mitigation"]
+  },
+  {
+    "question": "Describe a time you drove a significant cost reduction in operations without reducing service quality or team capacity. What levers did you use?",
+    "industry": "Operations",
+    "role_level": "Senior",
+    "type": "behavioral",
+    "tags": ["cost reduction", "efficiency", "service quality"]
+  },
+  {
+    "question": "Tell me about a time you built operational capability in a new geography or market. What did you get right and what would you approach differently?",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["geographic expansion", "capability building", "lessons learned"]
+  },
+  {
+    "question": "How would you design a vendor risk management framework for a supply chain that spans multiple countries and regulatory environments?",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "technical",
+    "tags": ["vendor risk", "global supply chain", "compliance"]
+  },
+  {
+    "question": "Your board is requesting a 25% reduction in operational costs within 18 months without reducing customer-facing service levels. How do you approach this?",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "situational",
+    "tags": ["cost transformation", "stakeholder management", "strategic planning"]
+  },
+  {
+    "question": "Describe how you have created and sustained a culture of continuous improvement in an operations team. What specific practices and rituals did you put in place?",
+    "industry": "Operations",
+    "role_level": "Lead",
+    "type": "behavioral",
+    "tags": ["continuous improvement", "culture", "operational excellence"]
+  },
+  {
+    "question": "Your pull request has been open for three days with no reviews because your teammates are heads-down on a deadline. How do you handle this without disrupting the team?",
+    "industry": "Tech",
+    "role_level": "Junior",
+    "type": "situational",
+    "tags": ["code review", "communication", "team dynamics"]
+  },
+  {
+    "question": "Describe a time you had to meet a tight financial reporting deadline while also ensuring the numbers were completely accurate. How did you manage the tension?",
+    "industry": "Finance",
+    "role_level": "Junior",
+    "type": "behavioral",
+    "tags": ["deadline management", "accuracy", "prioritization"]
+  }
+]
